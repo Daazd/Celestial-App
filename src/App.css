@@ -1,38 +1,188 @@
+/* /* App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0c1222;
+  color: white;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.chatbot-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user {
+  background-color: #4a5568;
+  align-self: flex-end;
+}
+
+.bot {
+  background-color: #2d3748;
+  align-self: flex-start;
+}
+
+form {
+  display: flex;
+  padding: 20px;
+}
+
+input {
+  flex-grow: 1;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4299e1;
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #3182ce;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* App.css - Add this at the end */
+
+.home-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.features-section {
+  position: relative;
+  z-index: 30; 
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+}
+
+.background-image {
+  position: fixed; /* Keep background image fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the area */
+  z-index: 0; /* Behind everything */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 1; /* Overlay above the background */
+}
+
+.content {
+  position: relative; /* Content should be on top of the overlay */
+  z-index: 2; /* Ensure content is above overlay */
+  text-align: center; /* Center text */
+  padding: 16px; /* Add padding if necessary */
+}
+
+.menu {
+  display: flex; /* Ensure the menu is a flex container */
+  justify-content: center; /* Center the menu items */
+  padding: 16px; /* Add padding for better spacing */
+}
+
+.menu ul {
+  display: flex; /* Make the unordered list a flex container */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.menu li {
+  list-style: none; /* Remove bullets */
+  margin: 0 10px; /* Space between menu items */
+}
+
+.menu a {
+  display: inline-block; /* Makes links behave like buttons */
+  padding: 12px 24px; /* Add padding for a button-like appearance */
+  background-color: rgba(34, 34, 34, 0.8); /* Dark background with opacity */
+  color: #61dafb; /* Light space-themed color */
+  border-radius: 8px; /* Rounded corners */
+  text-align: center; /* Center text */
+  transition: background-color 0.3s, color 0.3s; /* Transition for smooth hover effect */
+}
+
+.menu a:hover {
+  background-color: rgba(97, 218, 251, 0.8); /* Light blue on hover */
+  color: #000; /* Change text color on hover */
+}
+
+/* Features Section Styles */
+.features-section {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  color: #ffffff; /* Ensure text is white */
+  padding: 32px; /* Add padding for better spacing */
+  flex-grow: 1; /* Allow section to grow */
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center items horizontally */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.feature-card {
+  background-color: rgba(34, 34, 34, 0.8); /* Dark background for feature cards */
+  border: 2px solid rgba(97, 218, 251, 0.5); /* Light blue border for feature cards */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Add padding for better spacing */
+  margin: 16px; /* Add margin for better spacing */
+  text-align: center; /* Center text */
+  transition: background-color 0.3s, color 0.3s; /* Transition for smooth hover effect */
+  display: inline-block; /* Make sure cards are inline */
+  min-width: 450px; /* Set minimum width for cards */
+  min-height: 800px;
+}
+
+.feature-card:hover {
+  background-color: rgba(97, 218, 251, 0.2); /* Change background on hover */
+  color: #ffffff; /* Ensure text remains readable on hover */
+}
+
+/* Menu Styles */
+.menu a {
+  color: #ffffff; /* White text color for links */
+}
+
+.menu a:hover {
+  background-color: rgba(97, 218, 251, 0.8); /* Light blue on hover */
+  color: #000; /* Change text color on hover */
 }

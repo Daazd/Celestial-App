@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Home from './components/Home';
+import StarCoordinates from './components/StarCoordinates';
+import Chatbot from './components/Chatbot';
+import StargazingLocations from './components/StargazingLocations';
+import './App.css';  // Import the CSS file here
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+      <nav className="menu">
+          <ul className="flex justify-center space-x-4">
+            <li><Link to="/" className="text-white hover:text-blue-300">Home</Link></li>
+            <li><Link to="/coordinates" className="text-white hover:text-blue-300">Star Coordinates</Link></li>
+            <li><Link to="/chatbot" className="text-white hover:text-blue-300">Celestial Chatbot</Link></li>
+            <li><Link to="/locations" className="text-white hover:text-blue-300">Stargazing Locations</Link></li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/coordinates" element={<StarCoordinates />} />
+          <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/locations" element={<StargazingLocations />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
