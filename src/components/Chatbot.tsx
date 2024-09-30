@@ -31,6 +31,9 @@ const Chatbot: React.FC = () => {
 
     try {
       const response = await axios.post<{ response: string }>('http://localhost:5000/chat', { message: input });
+
+      console.log('Bot response:', response.data.response);
+
       const botMessage: Message = { text: response.data.response, isUser: false };
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
@@ -51,7 +54,11 @@ const Chatbot: React.FC = () => {
         {messages.map((message, index) => (
           <div key={index} className={styles.messageGroup}>
             <div className={`${styles.message} ${message.isUser ? styles.userMessage : styles.botMessage}`}>
-              {message.text}
+              {message.isUser ? (
+                message.text
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: message.text }} />
+              )}
             </div>
           </div>
         ))}
@@ -80,6 +87,6 @@ const Chatbot: React.FC = () => {
       </form>
     </div>
   );
-};
+}
 
 export default Chatbot;
