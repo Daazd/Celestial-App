@@ -17,6 +17,10 @@ mongoose.connect('mongodb://localhost/celestial_db', { useNewUrlParser: true, us
 const celestialBodySchema = new mongoose.Schema({
   name: String,
   type: String,
+  description: String,
+  keywords: String,
+  image_url: String,
+  date: String,
   coordinates: {
     rightAscension: Number,
     declination: Number
@@ -28,8 +32,14 @@ const CelestialBody = mongoose.model('CelestialBody', celestialBodySchema);
 
 // API endpoints
 app.get('/api/celestial-bodies', async (req, res) => {
-  const bodies = await CelestialBody.find();
-  res.json(bodies);
+  try {
+    const bodies = await CelestialBody.find().lean();
+    console.log('Sample of fetched data:', bodies.slice(0, 2));
+    res.json(bodies);
+  } catch (error) {
+    console.error('Error fetching celestial bodies:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 app.get('/api/celestial-bodies/:id', async (req, res) => {

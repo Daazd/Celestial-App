@@ -6,7 +6,6 @@ from chatbot import celestial_chatbot, load_model, load_and_preprocess_data
 
 app = Flask(__name__)
 
-# Load the model and data
 pipeline, label_encoder = load_model('celestial_model.joblib')
 _, _, celestial_data = load_and_preprocess_data('celestial_bodies.csv')
 
@@ -25,17 +24,11 @@ def download_proxy():
         return "No URL provided", 400
 
     try:
-        # Download the file
         response = requests.get(url, stream=True, verify=False)
         response.raise_for_status()
-
-        # Create an in-memory file-like object
         file_stream = io.BytesIO(response.content)
-
-        # Determine the MIME type
         content_type = response.headers.get('Content-Type', 'application/octet-stream')
 
-        # Send the file
         return send_file(
             file_stream,
             as_attachment=True,

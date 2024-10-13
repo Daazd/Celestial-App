@@ -9,14 +9,6 @@ import seaborn as sns
 def custom_tokenizer(text):
     return text.split()
 
-import joblib
-import numpy as np
-import pandas as pd
-from sklearn.metrics import confusion_matrix, classification_report, balanced_accuracy_score
-from sklearn.preprocessing import LabelEncoder
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 def load_data_and_model(data_path, model_path):
     data = pd.read_csv(data_path)
     model_dict = joblib.load(model_path)
@@ -42,16 +34,10 @@ def map_label_to_category(label):
         return 'Other Phenomena'
 
 def evaluate_model(X, y, model, label_encoder):
-    # Map current labels to general categories
     y_mapped = y.apply(map_label_to_category)
-    
     print("Label distribution after mapping:")
     print(y_mapped.value_counts())
-
-    # Transform labels
     y_true_encoded = label_encoder.transform(y_mapped)
-
-    # Make predictions
     try:
         y_pred = model.predict(X)
         y_pred_decoded = label_encoder.inverse_transform(y_pred)
@@ -60,7 +46,6 @@ def evaluate_model(X, y, model, label_encoder):
         print(classification_report(y_mapped, y_pred_decoded, zero_division=0))
         print(f"Balanced Accuracy: {balanced_accuracy_score(y_true_encoded, y_pred):.4f}")
 
-        # Confusion Matrix
         cm = confusion_matrix(y_mapped, y_pred_decoded)
         plt.figure(figsize=(12, 10))
         sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=label_encoder.classes_, yticklabels=label_encoder.classes_)

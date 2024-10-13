@@ -1,0 +1,209 @@
+.galleryContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    background-color: #111827;
+    min-height: 100vh;
+  }
+  
+  .galleryTitle {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 32px;
+    text-align: center;
+    color: white;
+  }
+  
+  .galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+  }
+  
+  .galleryItem {
+    background-color: #1f2937;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .galleryItem:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .galleryItemImageContainer {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* 4:3 aspect ratio */
+    background-color: #2a3544; /* Placeholder color */
+  }
+  
+  .galleryItemImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .galleryItemInfo {
+    padding: 16px;
+  }
+  
+  .galleryItemTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .galleryItemDate {
+    font-size: 14px;
+    color: #9ca3af;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background-color: #1f2937;
+    border-radius: 8px;
+    padding: 24px;
+    width: 90%;
+    max-width: 896px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .modalCloseButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .modalCloseButton:hover {
+    color: #d1d5db;
+  }
+  
+  .modalTitle {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    padding-right: 32px;
+    color: white;
+  }
+  
+  .modalImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    height: 60vh;
+  }
+  
+  .modalImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  
+  .modalDescription {
+    margin-bottom: 16px;
+    color: #d1d5db;
+    overflow-y: auto;
+    max-height: 20vh;
+  }
+  
+  .modalInfo {
+    font-size: 14px;
+    color: #9ca3af;
+    margin-bottom: 8px;
+  }
+  
+  .loadingText, .errorText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-size: 24px;
+  }
+  
+  .errorText {
+    color: #ef4444;
+  }
+
+  .backToTopButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(31, 41, 55, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    z-index: 1000;
+  }
+  
+  .backToTopButton:hover {
+    background-color: rgba(31, 41, 55, 1);
+  }
+
+  .searchContainer {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .searchInput {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #4a5568;
+    border-radius: 25px;
+    background-color: #2d3748;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .searchInput:focus {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
+  }
+  
+  .searchInput::placeholder {
+    color: #a0aec0;
+  }

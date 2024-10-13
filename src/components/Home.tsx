@@ -7,16 +7,15 @@ import galaxy from './galaxy.jpg';
 import pillarsOfCreation from './pillars-of-creation.webp';
 import constellation from './constellation.webp';
 
-// FeatureCard component using Material-UI
 const FeatureCard: React.FC<{ image: string; title: string; description: string; link: string }> = ({ image, title, description, link }) => (
-  <Card className="feature-card" sx={{ maxWidth: 500, maxHeight: 500, backgroundColor: 'teal' }}> {/* Adjusted to use the CSS class */}
+  <Card className="feature-card" sx={{ maxWidth: 500, maxHeight: 500, backgroundColor: 'teal' }}>
     <CardActionArea component={Link} to={link}>
     <CardMedia 
         component="img" 
         height="140" 
         image={image} 
         alt={title} 
-        sx={{ objectFit: 'cover', height: '600px', width: '100%' }} // Fill the card
+        sx={{ objectFit: 'cover', height: '600px', width: '100%' }}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -51,6 +50,7 @@ const Home: React.FC = () => {
             <li><Link to="/coordinates" className="text-white hover:text-blue-300">Star Coordinates</Link></li>
             <li><Link to="/chatbot" className="text-white hover:text-blue-300">Celestial Chatbot</Link></li>
             <li><Link to="/locations" className="text-white hover:text-blue-300">Stargazing Locations</Link></li>
+            <li><Link to="/gallery" className="text-white hover:text-blue-300">Celestial Gallery</Link></li>
           </ul>
         </nav>
 
@@ -58,18 +58,18 @@ const Home: React.FC = () => {
         <section className="flex items-center justify-center h-[calc(100vh-64px)] text-white">
           <div className="text-center">
             <h1 className="text-5xl font-bold mb-4">Explore the Cosmos</h1>
-            <p className="text-xl mb-8">Embark on a journey through the stars with Celestial Explorer</p>
-            <Link
-              to="/chatbot" 
+            <p className="text-xl mb-8">Embark on a journey through the stars with Celestial Explorer and Discover the Universe</p>
+            {/* <Link
+              // to="/chatbot" 
               className="text-white hover:text-blue-300"
             >
               Start Your Cosmic Journey
-            </Link>
+            </Link> */}
           </div>
         </section>
 
         {/* Features Section */}
-        <h2 className="text-3xl font-bold mb-8 text-center text-white">Discover the Universe</h2>
+        <h2 className="text-5xl font-bold mb-8 text-center text-white">Discover the Universe</h2>
         <section className="features-section py-16">
           <div className="flex justify-center">
             <FeatureCard 
